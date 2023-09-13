@@ -2,9 +2,10 @@ const express = require("express");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  console.log("request recieved");
-  res.redirect("tapanalytics://leads/430");
+app.get("/:leadId", (req, res) => {
+  const { leadId } = req.params;
+  console.log("request recieved for lead", leadId);
+  res.redirect(`tapanalytics://leads/${leadId}`);
 });
 
 app.listen(3000, () => {
